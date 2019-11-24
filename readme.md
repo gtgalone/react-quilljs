@@ -1,5 +1,9 @@
 # react-quilljs [![Build Status](https://travis-ci.org/gtgalone/react-quilljs.svg?branch=master)](https://travis-ci.org/gtgalone/react-quilljs)
 
+<p align="center">
+  <a href="https://quilljs.com/" title="Quill"><img alt="Quill Logo" src="https://quilljs.com/assets/images/logo.svg" width="180"></a>
+</p>
+
 React Hook Wrapper for Quill. This module targets Node.js 6 or later.
 
 - Typescript support
