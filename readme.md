@@ -7,10 +7,15 @@
   React Hook Wrapper for Quill.
 </p>
 
-- Typescript support
-- Unopinionated
-- No dependencies
-- Tiny package size
+<p align="center">
+  Typescript support
+  &#x2022;
+  Unopinionated
+  &#x2022;
+  No dependencies
+  &#x2022;
+  Tiny package size
+</p>
 
 ## Install
 
