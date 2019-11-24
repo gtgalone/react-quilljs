@@ -1,0 +1,51 @@
+{
+	"name": "react-quilljs",
+	"version": "0.0.1",
+	"description": "React Hook Wrapper for Quill, powerfull rich text editor",
+	"license": "MIT",
+	"repository": "gtgalone/react-quilljs",
+	"author": {
+		"name": "Jehun Seem",
+		"email": "jehunseem@gmail.com",
+		"url": "https://github.com/gtgalone"
+	},
+	"scripts": {
+		"build:cjs": "tsc",
+		"build:esm": "tsc -m esNext --outDir esm",
+		"build": "yarn build:cjs && yarn build:esm"
+	},
+	"main": "lib/index.js",
+	"module": "esm/index.js",
+	"types": "lib/index.d.ts",
+	"typings": "lib/index.d.ts",
+	"files": [
+		"lib",
+		"esm"
+	],
+	"keywords": [
+		"react-quill",
+		"react-quilljs",
+		"quill",
+		"quilljs",
+		"react-hook-quill",
+		"react-hook-quilljs",
+		"react-editor",
+		"text-editor",
+		"rich-text-editor"
+	],
+	"peerDependencies": {
+		"quill": "^1.3.7",
+		"react": "^16.12.0"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.12",
+		"@types/quill": "^2.0.3",
+		"@types/react": "16.9.11",
+		"tslint": "5.20.1",
+		"tslint-config-prettier": "1.18.0",
+		"tslint-eslint-rules": "5.4.0",
+		"tslint-plugin-prettier": "2.0.1",
+		"tslint-react": "4.1.0",
+		"typescript": "3.7.2"
+	}
+}

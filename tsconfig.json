@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "pretty": true,
+    "sourceMap": false,
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": true,
+    "skipDefaultLibCheck": true,
+    "outDir": "lib",
+    "lib": ["es2018", "dom"],
+    "importHelpers": true
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "esm",
+    "tests",
+    "**/__tests__/**/*",
+    "*.test.ts"
+  ]
+}
