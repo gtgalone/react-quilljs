@@ -1,6 +1,6 @@
 # react-quilljs [![Build Status](https://travis-ci.org/gtgalone/react-quilljs.svg?branch=master)](https://travis-ci.org/gtgalone/react-quilljs)
 
-React Hook Checkbox List. This module targets Node.js 6 or later.
+React Hook Wrapper for Quill. This module targets Node.js 6 or later.
 
 - Typescript support
 - Unopinionated
