@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - '10'
   - '8'
-scripts:
-  - npm install codecov -g
-after_success:
-  - codecov
+install:
+  - npm install
+script:
+  - codecov -f coverage/*.json
