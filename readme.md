@@ -21,6 +21,8 @@
 
 ```
 $ npm install react-quilljs quill
+or
+$ yarn add react-quilljs quill
 ```
 
 ## Usage
