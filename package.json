@@ -1,6 +1,6 @@
 {
 	"name": "react-quilljs",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "React Hook Wrapper for Quill, powerful rich text editor",
 	"license": "MIT",
 	"repository": "gtgalone/react-quilljs",
