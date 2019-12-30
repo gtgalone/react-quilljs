@@ -168,3 +168,8 @@ Type: `Object`
 ## License
 
 MIT
+
+## Recommend Libraries
+
+- [React Checklist](https://github.com/gtgalone/react-checklist) - Make Checkbox List Easy and Simple with React Hooks.
+- [React Store](https://github.com/gtgalone/react-store) - React Hook Store with useContext and useReducer for State Management.
