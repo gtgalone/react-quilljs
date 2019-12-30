@@ -98,6 +98,56 @@ export default () => {
   );
 };
 ```
+---
+### With Custom Attached Image Upload
+```jsx
+import fetch from 'isomorphic-unfetch';
+
+export default () => {
+  const { editorRef, editor } = useQuill();
+
+  // Insert Image(selected by user) to editor
+  const insertToEditor = (url) => {
+    const range = editor.getSelection();
+    editor.insertEmbed(range.index, 'image', url);
+  };
+
+  // Upload Image to Image Server such as AWS S3, Cloudinary, Cloud Storage, etc..
+  const saveToServer = async (file) => {
+    const body = new FormData();
+    body.append('file', file);
+
+    const res = await fetch('Your Image Server URL', { method: 'POST', body });
+    insertToEditor(res.uploadedImageUrl);
+  };
+
+  // Open Dialog to select Image File
+  const selectLocalImage = () => {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
+
+    input.onchange = () => {
+      const file = input.files[0];
+      saveToServer(file);
+    };
+  };
+
+  React.useEffect(() => {
+    if (editor) {
+      // Add custom handler for Image Upload
+      editor.getModule('toolbar').addHandler('image', selectLocalImage);
+    }
+  }, [editor]);
+
+  return (
+    <div style={{ width: 500, height: 300, border: '1px solid lightgray' }}>
+      <div ref={editorRef} />
+    </div>
+  );
+};
+```
 
 ## Parameters
 ### useQuill(options)
