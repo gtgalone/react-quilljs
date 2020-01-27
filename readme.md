@@ -17,6 +17,15 @@
   Tiny package size
 </p>
 
+---
+## 1.1.0 Update Notification
+Return paramenters object names have changed to prevent confusing.
+```
+{ editor, editorRef } -> { quill, quillRef }
+```
+---
+
+
 ## Install
 
 ```
@@ -38,14 +47,14 @@ import 'quill/dist/quill.snow.css'; // Add css for snow theme
 // or import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
 
 export default () => {
-  const { editorRef, editor } = useQuill();
+  const { quill, quillRef } = useQuill();
 
-  console.log(editorRef); // { current: undefined } > { current: Editor Reference }
-  console.log(editor);    // undefined > Quill Object
+  console.log(quill);    // undefined > Quill Object
+  console.log(quillRef); // { current: undefined } > { current: Quill Editor Reference }
 
   return (
     <div style={{ width: 500, height: 300 }}>
-      <div ref={editorRef} />
+      <div ref={quillRef} />
     </div>
   );
 };
@@ -54,17 +63,17 @@ export default () => {
 ### With Initial Value
 ```jsx
 export default () => {
-  const { editorRef, editor } = useQuill();
+  const { quill, quillRef } = useQuill();
 
   React.useEffect(() => {
-    if (editor) {
-      editor.clipboard.dangerouslyPasteHTML('<h1>React Hook for Quill!</h1>');
+    if (quill) {
+      quill.clipboard.dangerouslyPasteHTML('<h1>React Hook for Quill!</h1>');
     }
-  }, [editor]);
+  }, [quill]);
 
   return (
     <div style={{ width: 500, height: 300 }}>
-      <div ref={editorRef} />
+      <div ref={quillRef} />
     </div>
   );
 };
@@ -89,11 +98,11 @@ export default () => {
 
   const formats = ['bold', 'italic', 'underline', 'strike'];
 
-  const { editorRef } = useQuill({ theme, modules, formats, placeholder });
+  const { quillRef } = useQuill({ theme, modules, formats, placeholder });
 
   return (
     <div style={{ width: 500, height: 300, border: '1px solid lightgray' }}>
-      <div ref={editorRef} />
+      <div ref={quillRef} />
     </div>
   );
 };
@@ -104,12 +113,12 @@ export default () => {
 import fetch from 'isomorphic-unfetch';
 
 export default () => {
-  const { editorRef, editor } = useQuill();
+  const { quill, quillRef } = useQuill();
 
-  // Insert Image(selected by user) to editor
+  // Insert Image(selected by user) to quill
   const insertToEditor = (url) => {
-    const range = editor.getSelection();
-    editor.insertEmbed(range.index, 'image', url);
+    const range = quill.getSelection();
+    quill.insertEmbed(range.index, 'image', url);
   };
 
   // Upload Image to Image Server such as AWS S3, Cloudinary, Cloud Storage, etc..
@@ -135,15 +144,15 @@ export default () => {
   };
 
   React.useEffect(() => {
-    if (editor) {
+    if (quill) {
       // Add custom handler for Image Upload
-      editor.getModule('toolbar').addHandler('image', selectLocalImage);
+      quill.getModule('toolbar').addHandler('image', selectLocalImage);
     }
-  }, [editor]);
+  }, [quill]);
 
   return (
     <div style={{ width: 500, height: 300, border: '1px solid lightgray' }}>
-      <div ref={editorRef} />
+      <div ref={quillRef} />
     </div>
   );
 };
@@ -203,14 +212,15 @@ Type: `Object`
 
 ## Return
 
-### editorRef
-Editor reference.\
-Type: `RefObject`
-
-### editor
-Quill object.\
+### quill
+Quill object. You can use quill apis(https://quilljs.com/docs/api/) with this Object.\
 Type: `Object`
 
+### quillRef
+Quill Editor reference.\
+Type: `RefObject`
+
+---
 ## Recommend Libraries
 
 - [React Checklist](https://github.com/gtgalone/react-checklist) - Make Checkbox List Easy and Simple with React Hooks.

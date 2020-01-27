@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect, RefObject } from 'react';
+import Quill from 'quill';
 
 export interface StringMap {
   [key: string]: any;
@@ -50,19 +51,20 @@ export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modu
   if (!options.formats) { options.formats = formats; }
   if (!options.theme) { options.theme = theme; }
 
-  const editorRef: RefObject<any> = useRef();
-  const [editor, setEditor] = useState();
-  let Quill: any;
+  const quillRef: RefObject<any> = useRef();
+  const [quill, setQuill] = useState();
+  let _Quill: any;
 
   useEffect(() => {
-    if (!Quill) { Quill = require('quill'); }
-    if (!editor && editorRef && editorRef.current) {
-      setEditor(new Quill(editorRef.current, options));
+    if (!_Quill) { _Quill = require('quill'); }
+    if (!quill && quillRef && quillRef.current) {
+      setQuill(new _Quill(quillRef.current, options));
     }
   }, []);
 
+
   return {
-    editorRef,
-    editor,
+    quillRef,
+    quill: quill as Quill,
   };
 };
