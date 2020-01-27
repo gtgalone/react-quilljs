@@ -66,5 +66,7 @@ export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modu
   return {
     quillRef,
     quill: quill as Quill,
+    editorRef: quillRef,
+    editor: quill as Quill,
   };
 };
