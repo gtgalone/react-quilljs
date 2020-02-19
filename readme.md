@@ -29,9 +29,13 @@ Return paramenters object names have changed to prevent confusing.
 ## Install
 
 ```
-$ npm install react-quilljs quill
-or
 $ yarn add react-quilljs quill
+or
+$ npm install react-quilljs quill
+
+
+// If you are using typescript
+$ yarn add -D @types/quill
 ```
 
 ## Usage
