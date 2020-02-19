@@ -79,6 +79,24 @@ export default () => {
 };
 ```
 ---
+### With Adding Plugins
+```jsx
+export default () => {
+  const { quill, quillRef, Quill } = useQuill({ modules: { magicUrl: true }});
+
+  if (Quill && !quill) { // For execute this line only once.
+    const MagicUrl = require('quill-magic-url').default; // Install with 'yarn add quill-magic-url'
+    Quill.register('modules/magicUrl', MagicUrl);
+  }
+
+  return (
+    <div style={{ width: 500, height: 300 }}>
+      <div ref={quillRef} />
+    </div>
+  );
+};
+```
+---
 ### With Custom Options
 ```jsx
 import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
@@ -213,12 +231,17 @@ Type: `Object`
 ## Return
 
 ### quill
-Quill object. You can use quill apis(https://quilljs.com/docs/api/) with this Object.\
+Quill object. You can use quill apis(https://quilljs.com/docs/api/) with this object.\
 Type: `Object`
 
 ### quillRef
 Quill Editor reference.\
 Type: `RefObject`
+
+### Quill
+Quill class. You can use register, find, import, debug.\
+Please refer example above.\
+Type: `Class`
 
 ---
 ## Recommend Libraries

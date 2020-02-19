@@ -1,21 +1,5 @@
 import { useRef, useState, useEffect, RefObject } from 'react';
-import Quill from 'quill';
-
-export interface StringMap {
-  [key: string]: any;
-}
-
-export interface QuillOptionsStatic {
-  debug?: string | boolean;
-  modules?: StringMap;
-  placeholder?: string;
-  readOnly?: boolean;
-  theme?: string;
-  formats?: string[];
-  bounds?: HTMLElement | string;
-  scrollingContainer?: HTMLElement | string;
-  strict?: boolean;
-}
+import { Quill, QuillOptionsStatic } from 'quill';
 
 const theme = 'snow';
 
@@ -45,28 +29,29 @@ const formats = [
 ];
 
 export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modules, formats }) => {
-
-  if (!options) { options = {}; }
-  if (!options.modules) { options.modules = modules; }
-  if (!options.formats) { options.formats = formats; }
-  if (!options.theme) { options.theme = theme; }
-
   const quillRef: RefObject<any> = useRef();
-  const [quill, setQuill] = useState();
-  let _Quill: any;
+
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [obj, setObj] = useState({
+    Quill: undefined as any | undefined,
+    quillRef,
+    quill: undefined as Quill | undefined,
+    editorRef: quillRef,
+    editor: undefined as Quill | undefined,
+  });
 
   useEffect(() => {
-    if (!_Quill) { _Quill = require('quill'); }
-    if (!quill && quillRef && quillRef.current) {
-      setQuill(new _Quill(quillRef.current, options));
+    if (!obj.Quill) { obj.Quill = require('quill') as Quill; }
+    if (obj.Quill && !obj.quill && quillRef && quillRef.current && isLoaded) {
+      const quill = new obj.Quill(quillRef.current, {
+        modules: { ...modules, ...options.modules },
+        formats: options.formats || formats,
+        theme: options.theme || theme,
+      });
+      setObj({ ...obj, quill, editor: quill });
     }
-  }, []);
+    setIsLoaded(true);
+  }, [obj.Quill]);
 
-
-  return {
-    quillRef,
-    quill: quill as Quill,
-    editorRef: quillRef,
-    editor: quill as Quill,
-  };
+  return obj;
 };
