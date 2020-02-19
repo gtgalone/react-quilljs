@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, RefObject } from 'react';
-import { Quill, QuillOptionsStatic } from 'quill';
+import Quill, { QuillOptionsStatic } from 'quill';
 
 const theme = 'snow';
 
