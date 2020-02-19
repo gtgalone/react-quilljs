@@ -1,6 +1,6 @@
 {
 	"name": "react-quilljs",
-	"version": "1.2.4",
+	"version": "1.2.5",
 	"description": "React Hook Wrapper for Quill, powerful rich text editor",
 	"license": "MIT",
 	"repository": "gtgalone/react-quilljs",
@@ -47,5 +47,6 @@
 		"tslint-plugin-prettier": "2.0.1",
 		"tslint-react": "4.1.0",
 		"typescript": "3.7.3"
-	}
+	},
+	"publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
