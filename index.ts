@@ -28,6 +28,28 @@ const formats = [
   'size', 'header', 'link', 'image', 'video', 'color', 'background', 'clean'
 ];
 
+function assign (target, _varArgs) {
+  'use strict';
+  if (target === null || target === undefined) {
+    throw new TypeError('Cannot convert undefined or null to object');
+  }
+
+  var to = Object(target);
+
+  for (var index = 1; index < arguments.length; index++) {
+    var nextSource = arguments[index];
+
+    if (nextSource !== null && nextSource !== undefined) {
+      for (var nextKey in nextSource) {
+        if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+          to[nextKey] = nextSource[nextKey];
+        }
+      }
+    }
+  }
+  return to;
+}
+
 export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modules, formats }) => {
   const quillRef: RefObject<any> = useRef();
 
@@ -44,11 +66,12 @@ export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modu
     if (!obj.Quill) { obj.Quill = require('quill') as Quill; }
     if (obj.Quill && !obj.quill && quillRef && quillRef.current && isLoaded) {
       const quill = new obj.Quill(quillRef.current, {
-        modules: { ...modules, ...options.modules },
+        modules: assign(modules, options.modules),
         formats: options.formats || formats,
         theme: options.theme || theme,
       });
-      setObj({ ...obj, quill, editor: quill });
+
+      setObj(assign(assign({}, obj), { quill, editor: quill }));
     }
     setIsLoaded(true);
   }, [obj.Quill]);
