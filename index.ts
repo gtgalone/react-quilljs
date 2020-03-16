@@ -65,11 +65,12 @@ export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modu
   useEffect(() => {
     if (!obj.Quill) { obj.Quill = require('quill') as Quill; }
     if (obj.Quill && !obj.quill && quillRef && quillRef.current && isLoaded) {
-      const quill = new obj.Quill(quillRef.current, {
+      const opts = assign(options, {
         modules: assign(modules, options.modules),
         formats: options.formats || formats,
         theme: options.theme || theme,
-      });
+      })
+      const quill = new obj.Quill(quillRef.current, opts);
 
       setObj(assign(assign({}, obj), { quill, editor: quill }));
     }
