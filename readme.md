@@ -40,6 +40,8 @@ $ yarn add -D @types/quill
 
 ## Usage
 
+[Code Sandbox Playground Example](https://codesandbox.io/s/react-quilljsbasic-wm0uk)
+
 ### Basic
 ```jsx
 import React from 'react';
