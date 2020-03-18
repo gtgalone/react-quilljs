@@ -105,12 +105,13 @@ export default () => {
 ---
 ### With Custom Options
 ```jsx
-import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
-// or import 'quill/dist/quill.snow.css'; // Add css for snow theme
+import 'quill/dist/quill.snow.css'; // Add css for snow theme
+// import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
 
 export default () => {
 
-  const theme = 'bubble';
+  const theme = 'snow';
+  // const theme = 'bubble';
 
   const modules = {
     toolbar: [
