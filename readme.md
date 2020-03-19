@@ -86,6 +86,33 @@ export default () => {
 ```
 ---
 ### With Adding Plugins
+#### counter
+```jsx
+export default () => {
+  const counterRef = React.useRef();
+  const { quill, quillRef, Quill } = useQuill({ modules: { counter: true } });
+
+  if (Quill && !quill) {
+    // For execute this line only once.
+    Quill.register('modules/counter', function(quill, options) {
+      quill.on('text-change', function() {
+        const text = quill.getText();
+        // There are a couple issues with counting words
+        // this way but we'll fix these later
+        counterRef.current.innerText = text.split(/\s+/).length;
+      });
+    });
+  }
+
+  return (
+    <div style={{ width: 500, height: 300 }}>
+      <div ref={quillRef} />
+      <div ref={counterRef} />
+    </div>
+  );
+};
+```
+#### magin-url
 ```jsx
 export default () => {
   const { quill, quillRef, Quill } = useQuill({ modules: { magicUrl: true }});
@@ -104,6 +131,7 @@ export default () => {
 ```
 ---
 ### With Custom Options
+#### custom all options
 ```jsx
 import 'quill/dist/quill.snow.css'; // Add css for snow theme
 // import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
@@ -128,6 +156,36 @@ export default () => {
   return (
     <div style={{ width: 500, height: 300, border: '1px solid lightgray' }}>
       <div ref={quillRef} />
+    </div>
+  );
+};
+```
+#### custom toolbar with elements
+```jsx
+export default () => {
+  const { quillRef } = useQuill({
+    modules: {
+      toolbar: '#toolbar'
+    },
+    formats: ["size", "bold", "script"], // Important
+  });
+
+  return (
+    <div style={{ width: 500, height: 300 }}>
+      <div ref={quillRef} />
+
+      <div id="toolbar">
+        <select className="ql-size">
+          <option value="small" />
+          <option selected />
+          <option value="large" />
+          <option value="huge" />
+        </select>
+        <button className="ql-bold" />
+        <button className="ql-script" value="sub" />
+        <button className="ql-script" value="super" />
+      </div>
+      <div id="editor" />
     </div>
   );
 };
