@@ -112,7 +112,7 @@ export default () => {
   );
 };
 ```
-#### magin-url
+#### magic-url
 ```jsx
 export default () => {
   const { quill, quillRef, Quill } = useQuill({ modules: { magicUrl: true }});
