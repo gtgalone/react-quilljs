@@ -8,13 +8,15 @@
 </p>
 
 <p align="center">
-  Typescript support
+  Typescript Support
   &#x2022;
   Unopinionated
   &#x2022;
-  No dependencies
+  No Dependencies
   &#x2022;
-  Tiny package size
+  Tiny Package Size
+  &#x2022;
+  SSR Safe
 </p>
 
 ---
@@ -29,14 +31,18 @@ Return paramenters object names have changed to prevent confusing.
 ## Install
 
 ```
+// Install react quill
+
 $ yarn add react-quilljs quill
 or
 $ npm install react-quilljs quill
 
 
-// If you are using typescript
+// If you are using Typescript
+
 $ yarn add -D @types/quill
 ```
+---
 
 ## Usage
 
