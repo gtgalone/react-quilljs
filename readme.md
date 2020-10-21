@@ -8,6 +8,8 @@
 </p>
 
 <p align="center">
+  SSR Safe
+  &#x2022;
   Typescript Support
   &#x2022;
   Unopinionated
@@ -15,8 +17,6 @@
   No Dependencies
   &#x2022;
   Tiny Package Size
-  &#x2022;
-  SSR Safe
 </p>
 
 ---
@@ -31,7 +31,7 @@ Return paramenters object names have changed to prevent confusing.
 ## Install
 
 ```
-// Install react quill
+// Install packages
 
 $ yarn add react-quilljs quill
 or
@@ -302,7 +302,8 @@ Type: `Object`
 ## Return
 
 ### quill
-Quill object. You can use quill apis(https://quilljs.com/docs/api/) with this object.\
+Quill object.\
+You can use quill apis(https://quilljs.com/docs/api/) with this object.\
 Type: `Object`
 
 ### quillRef
