@@ -91,6 +91,27 @@ export default () => {
 };
 ```
 ---
+### With onChange Handler
+```jsx
+export default () => {
+  const { quill, quillRef } = useQuill();
+
+  React.useEffect(() => {
+    if (quill) {
+      quill.on('text-change', () => {
+        console.log('Text change!');
+      };
+    }
+  }, [quill]);
+
+  return (
+    <div style={{ width: 500, height: 300 }}>
+      <div ref={quillRef} />
+    </div>
+  );
+};
+```
+---
 ### With Adding Plugins
 #### counter
 ```jsx
