@@ -100,7 +100,7 @@ export default () => {
     if (quill) {
       quill.on('text-change', () => {
         console.log('Text change!');
-      };
+      });
     }
   }, [quill]);
 
