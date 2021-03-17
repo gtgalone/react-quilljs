@@ -19,15 +19,6 @@
   Tiny Package Size
 </p>
 
----
-## 1.1.0 Update Notification
-Return paramenters object names have changed to prevent confusing.
-```
-{ editor, editorRef } -> { quill, quillRef }
-```
----
-
-
 ## Install
 
 ```
