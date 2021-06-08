@@ -50,6 +50,11 @@ function assign (target, _varArgs) {
   return to;
 }
 
+/**
+ * 
+ * @param options Quill static options. https://github.com/gtgalone/react-quilljs#options
+ * @returns Returns quill, quillRef, and Quill. https://github.com/gtgalone/react-quilljs#return
+ */
 export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modules, formats }) => {
   const quillRef: RefObject<any> = useRef();
 
