@@ -1,22 +1,23 @@
-import { useRef, useState, useEffect, RefObject } from 'react';
-import Quill, { QuillOptionsStatic } from 'quill';
+import { useRef, useState, useEffect, RefObject } from "react";
 
-const theme = 'snow';
+import Quill, { QuillOptionsStatic } from "quill";
+
+const theme = "snow";
 
 const modules = {
   toolbar: [
-    ['bold', 'italic', 'underline', 'strike'],
+    ["bold", "italic", "underline", "strike"],
     [{ align: [] }],
 
-    [{ list: 'ordered'}, { list: 'bullet' }],
-    [{ indent: '-1'}, { indent: '+1' }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ indent: "-1" }, { indent: "+1" }],
 
-    [{ size: ['small', false, 'large', 'huge'] }],
+    [{ size: ["small", false, "large", "huge"] }],
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ['link', 'image', 'video'],
+    ["link", "image", "video"],
     [{ color: [] }, { background: [] }],
 
-    ['clean'],
+    ["clean"],
   ],
   clipboard: {
     matchVisual: false,
@@ -24,23 +25,36 @@ const modules = {
 };
 
 const formats = [
-  'bold', 'italic', 'underline', 'strike', 'align', 'list', 'indent',
-  'size', 'header', 'link', 'image', 'video', 'color', 'background', 'clean'
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "align",
+  "list",
+  "indent",
+  "size",
+  "header",
+  "link",
+  "image",
+  "video",
+  "color",
+  "background",
+  "clean",
 ];
 
-function assign (target, _varArgs) {
-  'use strict';
+function assign(target: any, _varArgs: any) {
+  "use strict";
   if (target === null || target === undefined) {
-    throw new TypeError('Cannot convert undefined or null to object');
+    throw new TypeError("Cannot convert undefined or null to object");
   }
 
-  var to = Object(target);
+  const to = Object(target);
 
-  for (var index = 1; index < arguments.length; index++) {
-    var nextSource = arguments[index];
+  for (let index = 1; index < arguments.length; index++) {
+    const nextSource = arguments[index];
 
     if (nextSource !== null && nextSource !== undefined) {
-      for (var nextKey in nextSource) {
+      for (const nextKey in nextSource) {
         if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
           to[nextKey] = nextSource[nextKey];
         }
@@ -51,11 +65,13 @@ function assign (target, _varArgs) {
 }
 
 /**
- * 
+ *
  * @param options Quill static options. https://github.com/gtgalone/react-quilljs#options
  * @returns Returns quill, quillRef, and Quill. https://github.com/gtgalone/react-quilljs#return
  */
-export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modules, formats }) => {
+export const useQuill = (
+  options: QuillOptionsStatic | undefined = { theme, modules, formats }
+) => {
   const quillRef: RefObject<any> = useRef();
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -68,19 +84,22 @@ export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modu
   });
 
   useEffect(() => {
-    if (!obj.Quill) { obj.Quill = require('quill') as Quill; }
+    if (!obj.Quill) {
+      setObj((prev) => ({ ...prev, Quill }));
+    }
     if (obj.Quill && !obj.quill && quillRef && quillRef.current && isLoaded) {
-      const opts = assign(options, {
+      const opts = {
+        ...options,
         modules: assign(modules, options.modules),
         formats: options.formats || formats,
         theme: options.theme || theme,
-      })
+      };
       const quill = new obj.Quill(quillRef.current, opts);
 
-      setObj(assign(assign({}, obj), { quill, editor: quill }));
+      setObj((prev) => ({ ...prev, quill, editor: quill }));
     }
     setIsLoaded(true);
-  }, [obj.Quill]);
+  }, [isLoaded, obj, options]);
 
   return obj;
 };
