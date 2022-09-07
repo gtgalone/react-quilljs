@@ -83,7 +83,7 @@ export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modu
 
   useEffect(() => {
     if (!obj.Quill) {
-      setObj((prev) => assign(prev, { Quill }));
+      setObj((prev) => assign(prev, { Quill: require('quill') }));
     }
     if (obj.Quill && !obj.quill && quillRef && quillRef.current && isLoaded) {
 
