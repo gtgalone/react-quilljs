@@ -1,13 +1,13 @@
 {
-	"name": "react-quilljs",
-	"version": "1.3.3",
+	"name": "react-quilljs-vite-fix",
+	"version": "1.0.0",
 	"description": "React Hook Wrapper for Quill, powerful rich text editor",
 	"license": "MIT",
-	"repository": "gtgalone/react-quilljs",
+	"repository": "prajjwalkapoor/react-quilljs",
 	"author": {
-		"name": "Jehun Seem",
-		"email": "jehunseem@gmail.com",
-		"url": "https://github.com/gtgalone"
+		"name": "Prajjwal Kapoor",
+		"email": "prajjwa.kapoor.mail@gmail.com",
+		"url": "https://github.com/prajjwalkapoor"
 	},
 	"scripts": {
 		"build:cjs": "tsc",
