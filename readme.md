@@ -24,6 +24,8 @@
 ```
 // Install packages
 
+$ pnpm add react-quilljs quill
+or
 $ yarn add react-quilljs quill
 or
 $ npm install react-quilljs quill
@@ -31,7 +33,7 @@ $ npm install react-quilljs quill
 
 // If you are using Typescript
 
-$ yarn add -D @types/quill
+$ pnpm add -D @types/quill
 ```
 ---
 

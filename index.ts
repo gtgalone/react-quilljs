@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, RefObject } from 'react';
 
-import Quill, { QuillOptionsStatic } from 'quill';
+import Quill, { QuillOptions } from 'quill';
 
 const theme = 'snow';
 
@@ -69,7 +69,7 @@ function assign(target: any, _varArgs: any) {
  * @param options Quill static options. https://github.com/gtgalone/react-quilljs#options
  * @returns Returns quill, quillRef, and Quill. https://github.com/gtgalone/react-quilljs#return
  */
-export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modules, formats }) => {
+export const useQuill = (options: QuillOptions | undefined = { theme, modules, formats }) => {
   const quillRef: RefObject<any> = useRef();
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -83,7 +83,7 @@ export const useQuill = (options: QuillOptionsStatic | undefined = { theme, modu
 
   useEffect(() => {
     if (!obj.Quill) {
-      setObj((prev) => assign(prev, { Quill: require('quill') }));
+      setObj((prev) => assign(prev, { Quill: require('quill').default }));
     }
     if (obj.Quill && !obj.quill && quillRef && quillRef.current && isLoaded) {
 
