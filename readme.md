@@ -34,6 +34,18 @@ $ npm install react-quilljs quill
 // If you are using Typescript
 
 $ pnpm add -D @types/quill
+
+
+// If you are using Next.js. Update next.config.mjs.
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    esmExternals: "loose",
+  },
+};
+
+export default nextConfig;
 ```
 ---
 
