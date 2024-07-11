@@ -83,7 +83,7 @@ export const useQuill = (options: QuillOptions | undefined = { theme, modules, f
 
   useEffect(() => {
     if (!obj.Quill) {
-      setObj((prev) => assign(prev, { Quill: import('quill') }));
+      setObj((prev) => assign(prev, { Quill: require('quill').default }));
     }
     if (obj.Quill && !obj.quill && quillRef && quillRef.current && isLoaded) {
 

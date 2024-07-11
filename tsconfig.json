@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "declaration": true,
@@ -17,7 +17,7 @@
     "skipDefaultLibCheck": true,
     "outDir": "lib",
     "lib": [
-      "es2018",
+      "es2022",
       "dom"
     ],
     "importHelpers": true
