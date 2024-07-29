@@ -294,8 +294,6 @@ Type: `Object`
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
       ['link', 'image', 'video'],
       [{ color: [] }, { background: [] }],
-
-      ['clean'],
     ],
     clipboard: {
       matchVisual: false,
@@ -314,7 +312,6 @@ Type: `Object`
     'size', 'header',
     'link', 'image', 'video',
     'color', 'background',
-    'clean',
   ]
   ```
 
