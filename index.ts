@@ -69,7 +69,7 @@ function assign(target: any, _varArgs: any) {
  * @returns Returns quill, quillRef, and Quill. https://github.com/gtgalone/react-quilljs#return
  */
 export const useQuill = (options: QuillOptions | undefined = { theme, modules, formats }) => {
-  const quillRef: RefObject<any> = useRef();
+  const quillRef: RefObject<any> = useRef(null);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [obj, setObj] = useState({
